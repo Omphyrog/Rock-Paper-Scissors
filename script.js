@@ -1,5 +1,5 @@
 let playerSelection;
-let computerSelection;
+let computerSelection = getComputerChoice();
 
 function getComputerChoice() {
   return Math.floor(Math.random() * 3) + 1;
@@ -9,4 +9,4 @@ function playRound() {}
 
 function game() {}
 
-console.log(getComputerChoice());
+console.log(computerSelection);
