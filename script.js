@@ -1,12 +1,14 @@
-let playerSelection;
-let computerSelection = getComputerChoice();
-
 function getComputerChoice() {
-  return Math.floor(Math.random() * 3) + 1;
+  let num = Math.floor(Math.random() * 3);
+  if (num == 1) {
+    return "rock";
+  } else if (num == 2) {
+    return "scissors";
+  } else {
+    return "paper";
+  }
 }
 
-function playRound() {}
-
-function game() {}
+let computerSelection = getComputerChoice();
 
 console.log(computerSelection);
