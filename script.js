@@ -12,9 +12,9 @@ function getComputerChoice() {
   }
 }
 
-let computerSelection = getComputerChoice();
+let computerSelection;
 
-let playerSelection = prompt("Please, choose 'Rock, paper or scissors': ");
+let playerSelection;
 
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
@@ -24,31 +24,66 @@ function playRound(playerSelection, computerSelection) {
     (playerSelection == "scissors" && computerSelection == "rock") ||
     (playerSelection == "paper" && computerSelection == "scissors")
   ) {
-    alert("You lose round");
+    alert(
+      "You lose round " +
+        "Computer: " +
+        computerScore +
+        " " +
+        "Player: " +
+        playerScore
+    );
     computerScore += 1;
   } else if (
     (playerSelection == "paper" && computerSelection == "rock") ||
     (playerSelection == "rock" && computerSelection == "scissors") ||
     (playerSelection == "scissors" && computerSelection == "paper")
   ) {
-    alert("You win round");
+    alert(
+      "You win round" +
+        " " +
+        "Computer: " +
+        computerScore +
+        " " +
+        "Player: " +
+        playerScore
+    );
     playerScore += 1;
   } else if (playerSelection === computerSelection) {
-    alert("It's a tie!");
+    alert(
+      "It's a tie!" +
+        " " +
+        "Computer: " +
+        computerScore +
+        " " +
+        "Player: " +
+        playerScore
+    );
   } else {
-    alert("Wrong answer! Please, choose 'Rock, paper or scissors'");
+    alert(
+      "Wrong answer! Please, choose 'Rock, paper or scissors'" +
+        " " +
+        "Computer: " +
+        computerScore +
+        " " +
+        "Player: " +
+        playerScore
+    );
   }
 }
 
-function game(playRound, playerScore, computerScore) {
-  for (let i = 0; i < 5; i++) {
+function game(playRound) {
+  for (let i = 0; i < Infinity; i++) {
+    computerSelection = getComputerChoice();
+    playerSelection = prompt("Please, choose 'Rock, paper or scissors': ");
     playRound(playerSelection, computerSelection);
-    if (playerScore == 4) {
+    if (playerScore == 5) {
       alert("You won the game");
-    } else if (computerScore == 4) {
-      alert("You lost the game");
+      break;
+    } else if (computerScore == 5) {
+      alert("Computer won");
+      break;
     }
   }
 }
 
-playRound(playerSelection, computerSelection);
+game(playRound);
