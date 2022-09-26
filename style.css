@@ -1,0 +1,73 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.h1 {
+  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-content: center;
+  height: 110px;
+}
+
+.selections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 600px;
+}
+
+.selection {
+  height: 100px;
+  width: 100px;
+  margin: 20px;
+}
+
+.footer {
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  position: fixed;
+  height: 100px;
+  bottom: 0;
+  width: 100%;
+}
+
+.score-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: brown;
+  width: 10%;
+}
+
+.score {
+  color: white;
+  font-weight: bold;
+  font-size: 100px;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.message {
+  background-color: bisque;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  font-weight: bold;
+}

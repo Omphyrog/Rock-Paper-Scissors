@@ -4,8 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./script.js"></script>
-    <title>Rock-Paper-Scissors</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="./script.js" defer></script>
+    <title>Rock Paper Scissors</title>
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <h1 class="h1">Can you beat a computer at Rock-Paper-Scissors?</h1>
+    </header>
+    <section class="selections">
+      <button class="selection" data-selection="rock">
+        <img class="img" src="./img/rock.png" alt="rock" />
+      </button>
+      <button class="selection" data-selection="paper">
+        <img class="img" src="./img/paper.png" alt="paper" />
+      </button>
+      <button class="selection" data-selection="scissors">
+        <img class="img" src="./img/scissors.png" alt="scissors" />
+      </button>
+    </section>
+    <div class="message">You won!</div>
+    <footer class="footer">
+      <div class="score-box">
+        <div class="score">1 0</div>
+      </div>
+      <div class="credentials"></div>
+    </footer>
+  </body>
 </html>
