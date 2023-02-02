@@ -1,89 +1,84 @@
 let playerScore = 0;
 let computerScore = 0;
 
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+const playerScore_div = document.querySelector(".player-score");
+const computerScore_div = document.querySelector(".computer-score");
+const message = document.querySelector(".message");
+
+function playerChoice() {
+  rockButton.addEventListener("click", function () {
+    playRound("rock");
+  });
+
+  paperButton.addEventListener("click", function () {
+    playRound("paper");
+  });
+
+  scissorsButton.addEventListener("click", function () {
+    playRound("scissors");
+  });
+}
+
 function getComputerChoice() {
+  const choices = ["rock", "paper", "scissors"];
   let num = Math.floor(Math.random() * 3);
-  if (num == 1) {
-    return "rock";
-  } else if (num == 2) {
-    return "scissors";
-  } else {
-    return "paper";
+  return choices[num];
+}
+
+function win() {
+  message.textContent = "You win!";
+  playerScore += 1;
+  playerScore_div.innerHTML = playerScore;
+
+  if (playerScore === 6) {
+    reset();
+    message.textContent = "You won the game!";
   }
 }
 
-let computerSelection;
+function lose() {
+  message.textContent = "You lose!";
+  computerScore += 1;
+  computerScore_div.innerHTML = computerScore;
 
-let playerSelection;
+  if (computerScore === 6) {
+    reset();
+    message.textContent = "You lost the game!";
+  }
+}
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
+function reset() {
+  playerScore = 0;
+  computerScore = 0;
+  playerScore_div.innerHTML = playerScore;
+  computerScore_div.innerHTML = computerScore;
+}
 
+function playRound(choice) {
+  const computerChoice = getComputerChoice();
   if (
-    (playerSelection == "rock" && computerSelection == "paper") ||
-    (playerSelection == "scissors" && computerSelection == "rock") ||
-    (playerSelection == "paper" && computerSelection == "scissors")
+    (choice === "rock" && computerChoice === "paper") ||
+    (choice === "scissors" && computerChoice === "rock") ||
+    (choice === "paper" && computerChoice === "scissors")
   ) {
-    alert(
-      "You lose round " +
-        "Computer: " +
-        computerScore +
-        " " +
-        "Player: " +
-        playerScore
-    );
-    computerScore += 1;
+    lose();
   } else if (
-    (playerSelection == "paper" && computerSelection == "rock") ||
-    (playerSelection == "rock" && computerSelection == "scissors") ||
-    (playerSelection == "scissors" && computerSelection == "paper")
+    (choice === "paper" && computerChoice === "rock") ||
+    (choice === "rock" && computerChoice === "scissors") ||
+    (choice === "scissors" && computerChoice === "paper")
   ) {
-    alert(
-      "You win round" +
-        " " +
-        "Computer: " +
-        computerScore +
-        " " +
-        "Player: " +
-        playerScore
-    );
-    playerScore += 1;
-  } else if (playerSelection === computerSelection) {
-    alert(
-      "It's a tie!" +
-        " " +
-        "Computer: " +
-        computerScore +
-        " " +
-        "Player: " +
-        playerScore
-    );
-  } else {
-    alert(
-      "Wrong answer! Please, choose 'Rock, paper or scissors'" +
-        " " +
-        "Computer: " +
-        computerScore +
-        " " +
-        "Player: " +
-        playerScore
-    );
+    win();
+  } else if (
+    (choice === "paper" && computerChoice === "paper") ||
+    (choice === "scissors" && computerChoice === "scissors") ||
+    (choice === "rock" && computerChoice === "rock")
+  ) {
+    message.textContent = "It's a draw";
+    return;
   }
 }
 
-function game(playRound) {
-  for (let i = 0; i < Infinity; i++) {
-    computerSelection = getComputerChoice();
-    playerSelection = prompt("Please, choose 'Rock, paper or scissors': ");
-    playRound(playerSelection, computerSelection);
-    if (playerScore == 5) {
-      alert("You won the game");
-      break;
-    } else if (computerScore == 5) {
-      alert("Computer won");
-      break;
-    }
-  }
-}
-
-game(playRound);
+playerChoice();
